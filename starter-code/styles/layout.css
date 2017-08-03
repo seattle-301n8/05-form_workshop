@@ -6,7 +6,7 @@
   float: right;
 }
 
-.clearfix::after {
+ input, label, .clearfix::after {
   content: "";
   display: table;
   clear: both;
