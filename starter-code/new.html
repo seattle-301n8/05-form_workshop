@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="styles/modules.css">
     <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
     <link>
-
     <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
     <script id="article-template" type="text/x-handlebars-template">
       <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
@@ -56,28 +55,33 @@
                    4. Author's URL
                    5. Article category
                    6. Some way to know if this article is a draft or is published -->
+        <form id="new-article-form">
+          <label for="title">Title:
+            <input id="title" name="title" type="text" required maxlength="255">
+          </label>
 
-            <form id="newArticleForm">
-              <label for="title">Title</label>
-              <input id="title" type="text" name="title" required>
+          <label for="body">Body:
+            <textarea id="body" name="body" cols="50" rows="20" required></textarea>
+          </label>
 
-              <label for="body">Body</label>
-              <textarea name="body" rows="8" cols="80" required></textarea>
+          <label for="author">Author:
+            <input id="author" name="author" type="text" required maxlength="255">
+          </label>
 
-              <label for="author">Author</label>
-              <input id="author" type="text" name="author" required>
+          <label for="author-url">Author Url:
+            <input id="author-url" name="author-url" type="url" required maxlength="255">
+          </label>
 
-              <label for="authorUrl">Author URL</label>
-              <input id="authorUrl" type="url" name="authorUrl" required>
+          <label for="category">Category:
+            <input id="category" name="category" type="text" required maxlength="255">
+          </label>
 
-              <label for="category">Author Category</label>
-              <input id="category" type="text" name="category" required>
+          <label for="published">Publish?
+            <input id="published" name="published" type="checkbox">
+          </label>
 
-              <label for="published">Publish?</label>
-              <input id="published" type="checkbox" name="published">
-                <br>
-              <button type="submit" name="button">Publish Article</button>
-            </form>
+          <button type="submit">Create New Article</button>
+        </form>
       </section>
 
       <section id="articles" class="tab-content">
@@ -100,10 +104,10 @@
     <script src="/scripts/article.js"></script>
     <script src="/scripts/articleView.js"></script>
     <script>
-      articleView.initNewArticlePage();
       // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
       // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
       //  Hint: Look in articleView.js for a function that does this.
+      articleView.initNewArticlePage();
     </script>
   </body>
 </html>
