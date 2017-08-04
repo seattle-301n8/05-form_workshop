@@ -25,6 +25,7 @@
         <a href="#" class="read-on">Read on &rarr;</a>
       </article>
     </script>
+
     </head>
   <body>
     <header class="site-header clearfix">
@@ -56,23 +57,29 @@
                    6. Some way to know if this article is a draft or is published -->
         <form id="new-article-form">
           <label for="title">Title:
-            <input id="title" name="title" type="text" required>
+            <input id="title" name="title" type="text" required maxlength="255">
           </label>
+
           <label for="body">Body:
             <textarea id="body" name="body" cols="50" rows="20" required></textarea>
           </label>
+
           <label for="author">Author:
             <input id="author" name="author" type="text" required maxlength="255">
           </label>
+
           <label for="author-url">Author Url:
             <input id="author-url" name="author-url" type="url" required maxlength="255">
           </label>
+
           <label for="category">Category:
             <input id="category" name="category" type="text" required maxlength="255">
           </label>
+
           <label for="published">Publish?
             <input id="published" name="published" type="checkbox">
           </label>
+
           <button type="submit">Create New Article</button>
         </form>
       </section>
@@ -100,6 +107,7 @@
       // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
       // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
       //  Hint: Look in articleView.js for a function that does this.
+      articleView.initNewArticlePage();
     </script>
   </body>
 </html>
