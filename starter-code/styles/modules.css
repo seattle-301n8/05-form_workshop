@@ -53,6 +53,10 @@
 }
 
 /*TODO: Add CSS for the "article-export" portion of our new page*/
+ #article-export input {
+   width: 50em;
+   height: 3.125em;
+ }
 
 
 @media only screen and (min-width: 640px) {

@@ -46,3 +46,7 @@ a:visited {
 /*FORM STYLES
 =======================================*/
 /*TODO: Add the CSS needed to style the form*/
+#new-article-form button:hover {
+  background-color: #435BD6;
+  color: white;
+}
