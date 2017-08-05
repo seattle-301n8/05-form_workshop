@@ -78,7 +78,7 @@ articleView.initNewArticlePage = function() {
   articleView.handleMainNav();
   articleView.setTeasers();
   // TODO: Hide the article-export section on page load
-  $('#article-json').hide();
+  $('#article-export').hide();
   $('#article-json').on('focus', function(){
     this.select();
   });
@@ -111,6 +111,8 @@ articleView.create = function(e) {
     // Set up this "export" functionality. When data is inputted into the form, that data should be converted to stringified JSON. Then, display that JSON in the element inside the article-export section. The article-export section was hidden on page load; make sure to show it as soon as data is entered in the form.
   $('#articles').prepend($(template(articleData)).attr('id', 'new-article-preview'));
   $('.tab[data-content="articles"]').click()
+  $('#article-export input[type="text"]').val(JSON.stringify(articleData));
+  $('#article-export').show();
 };
 
 
