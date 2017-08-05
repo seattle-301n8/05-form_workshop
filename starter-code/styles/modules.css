@@ -52,6 +52,11 @@
   text-decoration: none;
 }
 
+#article-export input {
+  width: 800px;
+  height:50px;
+}
+
 /*TODO: Add CSS for the "article-export" portion of our new page*/
 
 

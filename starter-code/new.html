@@ -12,6 +12,20 @@
     <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
     <link>
     <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
+    <script id="article-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{authorUrl}}">{{author}}</a></address>
+            {{publishStatus}}
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
+
     </head>
   <body>
     <header class="site-header clearfix">
@@ -41,6 +55,39 @@
                    4. Author's URL
                    5. Article category
                    6. Some way to know if this article is a draft or is published -->
+        <form id="new-article-form">
+          <label for="title">Title:
+            <br>
+            <input id="title" name="title" type="text" required maxlength="255">
+          </label>
+
+          <label for="body">Body:
+            <br>
+            <textarea id="body" name="body" cols="50" rows="10" required></textarea>
+          </label>
+
+          <label for="author">Author:
+            <br>
+            <input id="author" name="author" type="text" required maxlength="255">
+          </label>
+
+          <label for="author-url">Author Url:
+            <br>
+            <input id="author-url" name="author-url" type="url" required maxlength="255">
+          </label>
+
+          <label for="category">Category:
+            <br>
+            <input id="category" name="category" type="text" required maxlength="255">
+          </label>
+
+          <label for="published">Publish?
+            <br>
+            <input id="published" name="published" type="checkbox">
+          </label>
+
+          <button type="submit">Create New Article</button>
+        </form>
       </section>
 
       <section id="articles" class="tab-content">
@@ -49,6 +96,7 @@
 
       <section id="article-export">
         <!-- TODO: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only a incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
+        <input type="text" id="article-json" cols="20" rows="20">
       </section>
 
     </main>
@@ -66,6 +114,7 @@
       // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
       // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
       //  Hint: Look in articleView.js for a function that does this.
+      articleView.initNewArticlePage();
     </script>
   </body>
 </html>
