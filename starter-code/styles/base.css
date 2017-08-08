@@ -46,3 +46,20 @@ a:visited {
 /*FORM STYLES
 =======================================*/
 /*TODO: Add the CSS needed to style the form*/
+
+form {
+  margin-top: 3%;
+}
+
+input, textarea, button {
+  margin-bottom: 2%;
+}
+
+input {
+  display: block;
+}
+
+label {
+  display: block;
+  font-size: 1.4em;
+}

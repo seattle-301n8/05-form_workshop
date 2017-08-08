@@ -54,6 +54,11 @@
 
 /*TODO: Add CSS for the "article-export" portion of our new page*/
 
+#article-export {
+  font-size: 1.7em;
+  margin-bottom: 4%;
+}
+
 
 @media only screen and (min-width: 640px) {
   .icon-menu {
