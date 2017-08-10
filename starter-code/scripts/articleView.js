@@ -79,12 +79,14 @@ articleView.initNewArticlePage = function() {
   articleView.setTeasers();
 
   // TODO: Hide the article-export section on page load
+  $('#article-json').hide();
 
   $('#article-json').on('focus', function(){
     this.select();
   });
 
   // TODO: Add an event handler to update the preview and the article-export field if any inputs change.
+  ('#new-article-form').on('submit', articleView.create);
 
 };
 
