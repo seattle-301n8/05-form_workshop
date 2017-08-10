@@ -86,16 +86,17 @@ articleView.initNewArticlePage = function() {
   });
 
   // TODO: Add an event handler to update the preview and the article-export field if any inputs change.
-  ('#new-article-form').on('submit', articleView.create);
+  $('#new-article-form').on('submit', articleView.create);
 
 };
 
 // this is the function that generates the preview and shows the export field
-articleView.create = function() {
+articleView.create = function(e) {
+  e.preventDefault();
   // TODO: Set up a var to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
   var articleData = {};
-  $('#new-article-preview').html('');
+  $('#new-article-preview').remove();
 
 
   // TODO: Instantiate an article based on what's in the form fields:
@@ -105,14 +106,18 @@ articleView.create = function() {
   articleData.author = $form.find('#author').val();
   articleData.authorUrl = $form.find('#author-url').val();
   articleData.category = $form.find('#category').val();
-  articleData.publishedOn = $form.find('#published').is(':checked') ? new Date() : undefined;
+  articleData.publishedOn = $form.find('#published').is(':checked') ? new Date() : 'undefined';
+
 
 
   // TODO: Use our interface to the Handblebars template to put the article preview into the DOM:
+  var template = Handlebars.compile($('#article-template').html());
 
 
   // TODO: The new articles we create will be shown as JSON in an element in our article-export section. From there, we can copy/paste the JSON into our source data file.
     // Set up this "export" functionality. When data is inputted into the form, that data should be converted to stringified JSON. Then, display that JSON in the element inside the article-export section. The article-export section was hidden on page load; make sure to show it as soon as data is entered in the form.
+  $('#articles').prepend($(template(articleData)).attr('id', 'new-article-preview'));
+  $('.tab[data-content="articles"]').click();
 
 };
 
