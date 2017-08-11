@@ -119,7 +119,7 @@ articleView.create = function(e) {
   $('#articles').prepend($(template(articleData)).attr('id', 'new-article-preview'));
   $('.tab[data-content="articles"]').click();
 
-  $('#article-export input[type="text"]').val(JSON.stringify(articleData));
+  $('#article-export textarea').val(JSON.stringify(articleData));
   $('#article-export').show();
 
 };
