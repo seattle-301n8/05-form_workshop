@@ -53,6 +53,13 @@
 }
 
 /*TODO: Add CSS for the "article-export" portion of our new page*/
+/*.hljs {
+  color: #5cb34b;
+}*/
+#published {
+  display: inline;
+  width: 10%;
+}
 
 
 @media only screen and (min-width: 640px) {

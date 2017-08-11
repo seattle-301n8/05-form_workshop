@@ -6,7 +6,7 @@
   float: right;
 }
 
-.clearfix::after {
+input, label, textarea, .clearfix::after {
   content: "";
   display: table;
   clear: both;
@@ -36,4 +36,9 @@
     width: 20em;
     display: inline;
   }
+}
+
+.hljs textarea {
+  margin: auto;
+  width: 95%;
 }

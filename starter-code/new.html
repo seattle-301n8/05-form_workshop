@@ -8,10 +8,24 @@
     <link rel="stylesheet" href="styles/icons.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow-night-bright.min.css" />
     <link rel="stylesheet" href="styles/modules.css">
     <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
-    <link>
+
     <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
+    <script id="article-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{authorUrl}}">{{author}}</a></address>
+            {{publishStatus}}
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
     </head>
   <body>
     <header class="site-header clearfix">
@@ -41,6 +55,30 @@
                    4. Author's URL
                    5. Article category
                    6. Some way to know if this article is a draft or is published -->
+        <form id="new-article-form">
+          <label for="title">Title:
+            <input id="title" type="text" name="title" value="" required maxlength="255">
+         </label>
+
+          <label for="body">Body:
+            <textarea id="body" name="body" rows="20" cols="50" required></textarea>
+          </label>
+
+          <label for="author">Author:
+            <input id="author" type="text" name="author" value="" required maxlength="255">
+          </label>
+
+          <label for="author-url">Author URL:
+            <input id="author-url" type="url" name="authorUrl" value="" required maxlength="255">
+          </label>
+          <label for="category">Category:
+            <input id="category" type="text" name="category" value="" required maxlength="255">
+          </label>
+          <label for="published">Publish?
+            <input id="published" type="checkbox" name="published" value="">
+          </label>
+          <button type="submit" name="button">Create New Article</button>
+        </form>
       </section>
 
       <section id="articles" class="tab-content">
@@ -48,7 +86,10 @@
       </section>
 
       <section id="article-export">
+        <pre><code class="json">
         <!-- TODO: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only a incipit (short preview) of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
+        <textarea id="article-json" name="json" rows="5" cols="50"></textarea>
+        </code></pre>
       </section>
 
     </main>
@@ -59,13 +100,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <!-- NOTE (stretch goal): Include script tags for 3rd party libraries to enable Markdown rendering and code syntax highlighting. If we are not using a CDN and instead choose to store these scripts with our project, make sure to put them into an appropriate location in the 'vendor' directory. Keep in mind that if we want these features to render properly on our main blog page (index.html) that we'll need to add those scripts over there, too. -->
-    <script src="/scripts/blogArticles.js"></script>
-    <script src="/scripts/article.js"></script>
-    <script src="/scripts/articleView.js"></script>
+    <script src="scripts/blogArticles.js"></script>
+    <script src="scripts/article.js"></script>
+    <script src="scripts/articleView.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script>
       // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
       // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
       //  Hint: Look in articleView.js for a function that does this.
+      articleView.initNewArticlePage();
+      hljs.initHighlightingOnLoad();
     </script>
   </body>
 </html>
