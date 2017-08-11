@@ -120,7 +120,7 @@ articleView.create = function(e) {
   $('.tab[data-content="articles"]').click();
 
   $('#article-export input[type="text"]').val(JSON.stringify(articleData));
-  $('#article-json').show();
+  $('#article-export').show();
 
 };
 
